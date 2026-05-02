@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Homesick Song</string>
+    <string name="title_highlight">Top Song</string>
+    <string name="btn_browser">Link</string>
+    <string name="btn_detail">Detail</string>
+    <string name="title_settings">Language Settings</string>
+    <string name="btn_indonesia">Indonesia</string>
+    <string name="btn_english">English</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_meaning">Meaning</string>
+    <string name="cd_song_image">Image Song</string>
+</resources>

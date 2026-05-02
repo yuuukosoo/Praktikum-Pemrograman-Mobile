@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Homesick Song</string>
+    <string name="title_highlight">Lagu Teratas</string>
+    <string name="btn_browser">Laman</string>
+    <string name="btn_detail">Detail</string>
+    <string name="title_settings">Pengaturan Bahasa</string>
+    <string name="btn_indonesia">Bahasa Indonesia</string>
+    <string name="btn_english">Bahasa Inggris</string>
+    <string name="title_detail">Detail</string>
+    <string name="title_meaning">Makna</string>
+    <string name="cd_song_image">Gambar Lagu</string>
+</resources>

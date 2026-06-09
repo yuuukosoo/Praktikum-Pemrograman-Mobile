@@ -1,59 +1,97 @@
 package com.example.modul5compose.ui.screen
 
-import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.ui.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalConfiguration
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.modul5compose.viewmodel.SongViewModel
-import timber.log.Timber
+import coil.compose.AsyncImage
+import com.example.modul5compose.R
+import com.example.modul5compose.viewmodel.MovieViewModel
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun DetailScreen(navController: NavController, songId: Int?, viewModel: SongViewModel) {
-    val songList by viewModel.songs.collectAsState()
-    val song = songList.find { it.id == songId }
-    val lang = LocalConfiguration.current.locales.get(0).language
-    val isId = lang == "in" || lang == "id"
-
-    LaunchedEffect(song) {
-        song?.let {
-            Timber.d("Menampilkan Detail untuk lagu: ${it.title}")
-        }
-    }
+fun DetailScreen(navController: NavController, movieId: Int?, viewModel: MovieViewModel) {
+    val movies by viewModel.movies.collectAsState()
+    val movie = movies.find { it.id == movieId }
 
     Scaffold(
         topBar = {
-            Surface(color = Color.Black, shadowElevation = 4.dp) {
-                Row(Modifier.fillMaxWidth().statusBarsPadding().height(64.dp).padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+            TopAppBar(
+                title = {
+                    Text(text = movie?.title ?: stringResource(id = R.string.detail_default_title))
+                },
+                navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, null, tint = Color.White)
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(id = R.string.back_desc)
+                        )
                     }
-                    Text(song?.title ?: "Detail", style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.Bold, modifier = Modifier.padding(start = 8.dp))
                 }
-            }
+            )
         }
-    ) { p ->
-        song?.let {
-            Column(Modifier.fillMaxSize().padding(p).verticalScroll(rememberScrollState()).padding(16.dp)) {
-                Image(painterResource(it.imageRes), null, modifier = Modifier.fillMaxWidth().height(260.dp).clip(RoundedCornerShape(16.dp)), contentScale = ContentScale.Crop)
-                Row(Modifier.fillMaxWidth().padding(vertical = 20.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-                    Text(it.title, style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, modifier = Modifier.weight(1f))
-                    Text(it.year, style = MaterialTheme.typography.titleLarge, color = Color.Gray)
-                }
-                Text(stringResource(com.example.modul5compose.R.string.titlemean), fontWeight = FontWeight.Bold)
-                Text(if (isId) it.meanId else it.meanEn, modifier = Modifier.padding(top = 8.dp))
+    ) { padding ->
+        movie?.let {
+            Column(
+                modifier = Modifier
+                    .padding(padding)
+                    .verticalScroll(rememberScrollState())
+                    .padding(16.dp)
+            ) {
+                AsyncImage(
+                    model = "https://image.tmdb.org/t/p/w500${it.posterPath}",
+                    contentDescription = null,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(450.dp)
+                        .clip(RoundedCornerShape(16.dp)),
+                    contentScale = ContentScale.Crop
+                )
+
+                Spacer(Modifier.height(16.dp))
+
+                Text(
+                    text = it.title,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp
+                )
+
+                Text(
+                    text = stringResource(id = R.string.release_date_format, it.releaseDate ?: "-"),
+                    style = MaterialTheme.typography.bodyMedium
+                )
+
+                Text(
+                    text = stringResource(id = R.string.rating_format, it.rating),
+                    color = Color(0xFFFFA000),
+                    fontWeight = FontWeight.Bold
+                )
+
+                Spacer(Modifier.height(16.dp))
+
+                Text(
+                    text = stringResource(id = R.string.overview_label),
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
+
+                Text(
+                    text = it.overview,
+                    style = MaterialTheme.typography.bodyLarge
+                )
             }
         }
     }

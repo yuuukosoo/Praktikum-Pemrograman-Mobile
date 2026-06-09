@@ -1,10 +1,23 @@
 <resources>
-    <string name="app_name">HomeSick Song</string>
-    <string name="title_highlight">Top Songs</string>
-    <string name="btn_browser">Browser</string>
-    <string name="btn_detail">Detail</string>
-    <string name="title_settings">Language Settings</string>
-    <string name="btn_indonesia">Indonesian</string>
-    <string name="btn_english">English</string>
-    <string name="titlemean">Song</string>
+    <string name="app_name">Modul 5 Movie</string>
+
+    <!-- HomeScreen -->
+    <string name="home_title">TMDB Popular Movies</string>
+    <string name="highlight_label">Popular Highlights</string>
+    <string name="all_movies_label">All Movies</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_title">Settings</string>
+    <string name="back_desc">Back</string>
+    <string name="appearance_label">Appearance</string>
+    <string name="dark_mode_label">Dark Mode</string>
+    <string name="language_label">Language</string>
+    <string name="btn_indonesia">Bahasa Indonesia</string>
+    <string name="btn_english">English (US)</string>
+
+    <!-- DetailScreen -->
+    <string name="detail_default_title">Detail</string>
+    <string name="release_date_format">Release Date: %1$s</string>
+    <string name="rating_format">Rating: ⭐ %1$.1f</string>
+    <string name="overview_label">Overview</string>
 </resources>

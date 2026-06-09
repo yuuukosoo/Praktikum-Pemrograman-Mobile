@@ -1,10 +1,23 @@
 <resources>
-    <string name="app_name">HomeSick Song</string>
-    <string name="title_highlight">Lagu Teratas</string>
-    <string name="btn_browser">Laman</string>
-    <string name="btn_detail">Detail</string>
-    <string name="title_settings">Pengaturan Bahasa</string>
+    <string name="app_name">Modul 5 Film</string>
+
+    <!-- HomeScreen -->
+    <string name="home_title">Film Populer TMDB</string>
+    <string name="highlight_label">Sorotan Populer</string>
+    <string name="all_movies_label">Semua Film</string>
+
+    <!-- SettingsScreen -->
+    <string name="settings_title">Pengaturan</string>
+    <string name="back_desc">Kembali</string>
+    <string name="appearance_label">Tampilan</string>
+    <string name="dark_mode_label">Mode Gelap</string>
+    <string name="language_label">Bahasa</string>
     <string name="btn_indonesia">Bahasa Indonesia</string>
-    <string name="btn_english">Bahasa Inggris</string>
-    <string name="titlemean">Lagu</string>
+    <string name="btn_english">Inggris (US)</string>
+
+    <!-- DetailScreen -->
+    <string name="detail_default_title">Detail</string>
+    <string name="release_date_format">Tanggal Rilis: %1$s</string>
+    <string name="rating_format">Peringkat: ⭐ %1$.1f</string>
+    <string name="overview_label">Sinopsis</string>
 </resources>

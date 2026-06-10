@@ -30,7 +30,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun applyLocale(languageCode: String) {
-        val locale = Locale(languageCode.split("-")[0]) // ambil "en" dari "en-US"
+        val locale = Locale(languageCode.split("-")[0])
         Locale.setDefault(locale)
         val config = resources.configuration
         config.setLocale(locale)

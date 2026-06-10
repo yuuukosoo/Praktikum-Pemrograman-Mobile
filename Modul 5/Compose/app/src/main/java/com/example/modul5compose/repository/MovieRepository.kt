@@ -2,8 +2,8 @@ package com.example.modul5compose.repository
 
 import com.example.modul5compose.database.MovieDao
 import com.example.modul5compose.database.MovieEntity
-import com.example.modul5compose.model.Movie       // IMPORT INI YANG WAJIB ADA
-import com.example.modul5compose.model.MovieResponse // IMPORT INI JUGA WAJIB
+import com.example.modul5compose.model.Movie
+import com.example.modul5compose.model.MovieResponse
 import com.example.modul5compose.network.RetrofitInstance
 import kotlinx.coroutines.flow.Flow
 import timber.log.Timber
